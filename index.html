@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Stimulsoft Report Viewer</title>
+		<script
+			type="text/javascript"
+			src="scripts/stimulsoft.reports.js"></script>
+		<script
+			type="text/javascript"
+			src="scripts/stimulsoft.viewer.js"></script>
+		<script type="text/javascript">
+			function onLoad() {
+				// Create a new report object
+				var report = new Stimulsoft.Report.StiReport()
+
+				// Load report template in the report object
+				report.loadFile("/scripts/campaign.mrt")
+
+				// Create a new viewer
+				var viewer = new Stimulsoft.Viewer.StiViewer(
+					null,
+					"StiViewer",
+					false
+				)
+
+				// Assign report object to report viewer
+				viewer.report = report
+
+				// Render the viewer to the 'app' div
+				viewer.renderHtml("app")
+			}
+		</script>
+	</head>
+	<body onload="onLoad()">
+		<div id="app" style="width: 100%; height: 100vh"></div>
+	</body>
+</html>
